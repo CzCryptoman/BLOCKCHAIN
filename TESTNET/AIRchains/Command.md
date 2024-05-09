@@ -46,9 +46,40 @@ junctiond keys add <new-wallet>
 This command will generate your wallet's mnemonic and address. It's crucial to write these down and store them securely.
 
 ### Create new validator
+
+### If don't have token
+```
+junctiond comet show-validator
+```
+The output will be something like this:
+```
+{"@type":"/cosmos.crypto.ed25519.PubKey","key":"ZXONS7NNjLWH4HePBOoHKDAYeLXQO5iUwpCRQSi1poI="}
+```
+Create validator file
+```
+nano $HOME/.junction/config/validator.json
+```
+Input data to validator.json file. Replace at "pubkey": {....} from show-validator output
+```
+{
+	"pubkey": {"@type":"/cosmos.crypto.ed25519.PubKey","key":"ZXONS7NNjLWH4HePBOoHKDAYeLXQO5iUwpCRQSi1poI="},
+	"amount": "1000000amf",
+	"moniker": "<validator-name>",
+	"identity": "optional identity signature (ex. UPort or Keybase)",
+	"website": "validator's (optional) website",
+	"security": "validator's (optional) security contact email",
+	"details": "validator's (optional) details",
+	"commission-rate": "0.05",
+	"commission-max-rate": "0.2",
+	"commission-max-change-rate": "0.01",
+	"min-self-delegation": "1"
+}
+```
+Ctrl+o > Enter > Ctrl+x to save file & exit
+### OR if have token:
 ```
 junctiond tx staking create-validator \
-  --amount "1amf " \
+  --amount "1000000amf" \
   --pubkey $(junctiond tendermint show-validator) \
   --moniker "MONIKER" \
   --identity "KEYBASE_ID" \
@@ -65,21 +96,7 @@ junctiond tx staking create-validator \
   --from wallet \
   -y
 ```
-OR
-```
-/junctiond tx staking create-validator \
---amount=58stake \
---pubkey=$(./junctiond tendermint show-validator) \
---moniker=<moniker> \
---chain-id=junction \
---commission-rate="0.05" \
---commission-max-rate="0.10" \
---commission-max-change-rate="0.01" \
---min-self-delegation="1" \
---gas="200000" \
---fees="2stake" \
---from=<nameOfTheValdiator>
-```
+
 A prompt will appear in the CLI. To proceed, type 'y' and press enter.
 
 Key management
