@@ -47,7 +47,6 @@ This command will generate your wallet's mnemonic and address. It's crucial to w
 
 ### Create new validator
 
-### If don't have token
 ```
 junctiond comet show-validator
 ```
@@ -76,7 +75,13 @@ Input data to validator.json file. Replace at "pubkey": {....} from show-validat
 }
 ```
 Ctrl+o > Enter > Ctrl+x to save file & exit
-### OR if have token:
+
+Create VALIDATOR:
+```
+junctiond tx staking create-validator $HOME/.junction/config/validator.json --from wallet --chain-id junction --gas-prices 0.00025amf --gas-adjustment 1.5 --gas auto -y
+```
+
+### OR:
 ```
 junctiond tx staking create-validator \
   --amount "1000000amf" \
