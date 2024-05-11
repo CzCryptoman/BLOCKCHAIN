@@ -150,6 +150,12 @@ LimitNOFILE=1048576
 EOF
 ```
 
+### System reload
+``` 
+sudo systemctl daemon-reload 
+```
+
+
 ### Start service
 ```
 sudo service junctiond start
