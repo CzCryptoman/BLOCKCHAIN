@@ -144,6 +144,8 @@ Edit the `prometheus.yml` file and replace the targets with `your node's IP addr
       labels:
         instance: "validator"
 ```
+Change port `9090:9090` to `9091:9091` if `9090` is used: `$HOME/monitoring-tool/docker-compose.yml`
+
 Start the monitoring tool containers using Docker Compose:
 ```
 docker compose up -d
