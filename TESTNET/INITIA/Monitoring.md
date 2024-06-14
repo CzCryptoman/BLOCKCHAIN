@@ -110,8 +110,8 @@ If Docker is installed correctly, you should see a `"Hello from Docker!"` messag
 ### Alerts via Telegram Bot
 To receive alerts via Telegram, you'll need to create a new bot and obtain an API token.
 
-Start a conversation with @BotFather: `https://t.me/BotFather` and send the /newbot command to create a new bot. Follow the prompts until you receive the API token. Save this for later.
-Start a conversation with @userinfobot: `https://t.me/userinfobot` bot and send the /start command. The bot will respond with your user ID. Save this ID for later use.
+Start a conversation with @BotFather: `https://t.me/BotFather` and send the /newbot command to create a new bot. Follow the prompts until you receive the `API token`. Save this for later.
+Start a conversation with @userinfobot: `https://t.me/userinfobot` bot and send the /start command. The bot will respond with your `user ID`. Save this ID for later use.
 **Install Monitoring Tool**
 Clone the monitoring tool repository to your home directory:
 ```
@@ -130,12 +130,12 @@ cd ~/monitoring-tool/grafana/provisioning/dashboards
 wget https://raw.githubusercontent.com/skip-mev/slinky/main/grafana/provisioning/dashboards/chain-dashboard.json
 wget https://raw.githubusercontent.com/skip-mev/slinky/main/grafana/provisioning/dashboards/side-car-dashboard.json
 ```
-Edit the `config.yml` file and replace the chat_id and bot_token values with your Telegram user ID and bot token obtained earlier:
+Edit the `config.yml` file and replace the `chat_id` and `bot_token` values with `your Telegram user ID` and `bot token` obtained earlier:`alertmanager/config.yml.example alertmanager/config.yml`
 ```
 chat_id=1111111                 # your telegram user id
 bot_token=11111111:AAG_XXXXXXX  # your telegram bot token
 ```
-Edit the `prometheus.yml` file and replace the targets with your node's IP address and ports for Node Exporter, Prometheus, and slinky. The default ports are 9100, 26660, and 8002, respectively:
+Edit the `prometheus.yml` file and replace the targets with `your node's IP address` and `ports` for `Node Exporter`, `Prometheus`, and `slinky`. The default ports are `9100`, `26660`, and `8002`, respectively: `prometheus/prometheus.yml.example prometheus/prometheus.yml`
 ```
 # example for servers with node_exporter and cosmos-based node installed
   - job_name: "initia-validator"
