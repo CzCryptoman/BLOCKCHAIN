@@ -208,6 +208,14 @@ Delegate to your self:
 ```
 hedged tx staking delegate $(hedged keys show wallet --bech val -a) 1000000uhedge --from wallet --chain-id berberis-1 --gas-prices=0.025uhedge --gas-adjustment=1.5 --gas=auto -y
 ```
+Query your validator
+```bash
+hedged q mstaking validator $(hedged keys show wallet --bech val -a) 
+```
+Query missed blocks counter & jail details of your validator
+```bash
+hedged q slashing signing-info $(hedged tendermint show-validator)
+```
 
 Unjail:
 ```
