@@ -36,3 +36,23 @@ sudo journalctl -u initiad -f -o cat --no-hostname
 ```bash
 initiad status | jq -r .sync_info
 ```
+
+### GET PEER: 
+Get NODE peer:
+```
+echo $(initiad tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat .initia/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+
+Get live peers:
+```
+curl -sS http://localhost:26657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+```
+
+POLKACHU LIVE PEER: (20240531)
+
+RPC: https://initia-testnet-rpc.polkachu.com
+
+```
+curl -sS https://initia-testnet-rpc.polkachu.com/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+```
+
