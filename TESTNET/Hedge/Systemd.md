@@ -255,3 +255,20 @@ Remove Node
 ```
 sudo systemctl stop hedged && sudo systemctl disable hedged && sudo rm /etc/systemd/system/hedged.service && sudo systemctl daemon-reload && rm -rf $HOME/.hedge && rm -rf hedge && sudo rm -rf $(which hedged) 
 ```
+
+
+### GET PEER: 
+Get NODE peer:
+```
+echo $(hedged tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat .hedge/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+
+Get live peers:
+```
+curl -sS http://localhost:26657/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+```
+
+
+
+
+
