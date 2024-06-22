@@ -78,6 +78,7 @@ hedged config chain-id berberis-1
 hedged config keyring-backend test
 hedged init "Moniker" --chain-id berberis-1
 ```
+Genesis & Addrbook. Genesis ERROR!
 ```
 sudo wget -O $HOME/.hedge/config/genesis.json "https://github.com/hedgeblock/testnets/blob/release/dev/testnets/berberis-1/genesis/genesis.json"
 sudo wget -O $HOME/.hedge/config/addrbook.json "https://raw.githubusercontent.com/ValidatorVN/GuideNode/main/Hedge/addrbook.json"
