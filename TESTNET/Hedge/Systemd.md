@@ -222,7 +222,7 @@ hedged tx staking delegate $(hedged keys show wallet --bech val -a) 1000000uhedg
 ```
 ### Query your validator
 ```bash
-hedged q mstaking validator $(hedged keys show wallet --bech val -a) 
+hedged q staking validator $(hedged keys show wallet --bech val -a) 
 ```
 ### Query missed blocks counter & jail details of your validator
 ```bash
