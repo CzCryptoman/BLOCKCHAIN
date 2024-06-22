@@ -69,7 +69,7 @@ Dowload Hedged:
 mkdir -p $HOME/go/bin
 sudo wget -O hedged https://github.com/hedgeblock/testnets/releases/download/v0.1.0/hedged_linux_amd64_v0.1.0
 chmod +x hedged
-sudo mv hedged /go/bin
+sudo mv hedged $HOME/go/bin
 ```
 
 Config Node:
