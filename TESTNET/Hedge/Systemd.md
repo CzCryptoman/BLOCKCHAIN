@@ -43,7 +43,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential gi
 
 ## Install GO:
 ```
-ver="1.21.5" 
+ver="1.22.3" 
 cd $HOME 
 wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz" 
 ```
@@ -72,12 +72,63 @@ chmod +x hedged
 sudo mv hedged $HOME/go/bin
 ```
 
-### Config Node:
+
+### 4. Set up variables
+```bash
+# Customize if you need
+echo 'export MONIKER="My_Node"' >> ~/.bash_profile
+echo 'export CHAIN_ID="berberis-1"' >> ~/.bash_profile
+echo 'export WALLET_NAME="wallet"' >> ~/.bash_profile
+echo 'export RPC_PORT="25557"' >> ~/.bash_profile
+source $HOME/.bash_profile
+```
+
+### 5. Initialize & Config the node
+```bash
+cd $HOME
+hedged init $MONIKER --chain-id $CHAIN_ID
+hedged config set client chain-id $CHAIN_ID
+hedged config set client node tcp://localhost:$RPC_PORT
+hedged config set client keyring-backend os # You can set it to "test" so you will not be asked for a password
+```
+OR: 
 ```
 hedged config chain-id berberis-1
 hedged config keyring-backend test
 hedged init "Moniker" --chain-id berberis-1
 ```
+
+
+### 6. Change ports (Optional)
+```bash
+# Customize if you need
+EXTERNAL_IP=$(wget -qO- eth0.me) \
+PROXY_APP_PORT=25558 \
+P2P_PORT=25556 \
+PPROF_PORT=5050 \
+API_PORT=1317 \
+GRPC_PORT=8080 \
+GRPC_WEB_PORT=8081
+```
+```bash
+sed -i \
+    -e "s/\(proxy_app = \"tcp:\/\/\)\([^:]*\):\([0-9]*\).*/\1\2:$PROXY_APP_PORT\"/" \
+    -e "s/\(laddr = \"tcp:\/\/\)\([^:]*\):\([0-9]*\).*/\1\2:$RPC_PORT\"/" \
+    -e "s/\(pprof_laddr = \"\)\([^:]*\):\([0-9]*\).*/\1localhost:$PPROF_PORT\"/" \
+    -e "/\[p2p\]/,/^\[/{s/\(laddr = \"tcp:\/\/\)\([^:]*\):\([0-9]*\).*/\1\2:$P2P_PORT\"/}" \
+    -e "/\[p2p\]/,/^\[/{s/\(external_address = \"\)\([^:]*\):\([0-9]*\).*/\1${EXTERNAL_IP}:$P2P_PORT\"/; t; s/\(external_address = \"\).*/\1${EXTERNAL_IP}:$P2P_PORT\"/}" \
+    $HOME/.hedge/config/config.toml
+```
+```bash
+sed -i \
+    -e "/\[api\]/,/^\[/{s/\(address = \"tcp:\/\/\)\([^:]*\):\([0-9]*\)\(\".*\)/\1\2:$API_PORT\4/}" \
+    -e "/\[grpc\]/,/^\[/{s/\(address = \"\)\([^:]*\):\([0-9]*\)\(\".*\)/\1\2:$GRPC_PORT\4/}" \
+    -e "/\[grpc-web\]/,/^\[/{s/\(address = \"\)\([^:]*\):\([0-9]*\)\(\".*\)/\1\2:$GRPC_WEB_PORT\4/}" \
+    $HOME/.hedge/config/app.toml
+```
+
+
+
 ### Genesis & Addrbook:
 
 Genesis (ok):
