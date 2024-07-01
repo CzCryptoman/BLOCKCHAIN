@@ -79,7 +79,7 @@ sudo mv hedged $HOME/go/bin
 echo 'export MONIKER="My_Node"' >> ~/.bash_profile
 echo 'export CHAIN_ID="berberis-1"' >> ~/.bash_profile
 echo 'export WALLET_NAME="wallet"' >> ~/.bash_profile
-echo 'export RPC_PORT="25557"' >> ~/.bash_profile
+echo 'export RPC_PORT="26657"' >> ~/.bash_profile
 source $HOME/.bash_profile
 ```
 
@@ -103,12 +103,12 @@ hedged init "Moniker" --chain-id berberis-1
 ```bash
 # Customize if you need
 EXTERNAL_IP=$(wget -qO- eth0.me) \
-PROXY_APP_PORT=25558 \
-P2P_PORT=25556 \
-PPROF_PORT=5050 \
+PROXY_APP_PORT=26658 \
+P2P_PORT=26656 \
+PPROF_PORT=6060 \
 API_PORT=1317 \
-GRPC_PORT=8080 \
-GRPC_WEB_PORT=8081
+GRPC_PORT=9090 \
+GRPC_WEB_PORT=9091
 ```
 ```bash
 sed -i \
