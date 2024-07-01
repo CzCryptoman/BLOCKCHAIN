@@ -84,6 +84,17 @@ See detail in page
 snapshot page
 statesync page
 
+
+### Set Minumum Gas:
+```
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025uhedge\"/;" ~/.hedge/config/app.toml
+peers=""
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$peers\"/" $HOME/.hedge/config/config.toml
+seeds="7879005ab63c009743f4d8d220abd05b64cfee3d@54.92.167.150:26656"
+sed -i.bak -e "s/^seeds =.*/seeds = \"$seeds\"/" $HOME/.hedge/config/config.toml
+sed -i 's/max_num_inbound_peers =.*/max_num_inbound_peers = 50/g' $HOME/.hedge/config/config.toml
+sed -i 's/max_num_outbound_peers =.*/max_num_outbound_peers = 50/g' $HOME/.hedge/config/config.toml
+```
 ### Set service files:
 ```
 sudo tee /etc/systemd/system/hedged.service > /dev/null <<EOF
