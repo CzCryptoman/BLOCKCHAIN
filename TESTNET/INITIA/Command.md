@@ -75,10 +75,11 @@ OLD:
 ```
 initiad tx slashing unjail --from wallet --chain-id initiation-1 --gas-adjustment 1.4 --gas auto --gas-prices 0.15uinit -y
 ```
-JAIL REASON
+**JAIL REASON or CHECK MISSING BLOCK:**
 ```
 initiad query slashing signing-info $(initiad tendermint show-validator)
 ```
+
 LIST ALL ACTIVE VALIDATORS
 ```
 initiad q mstaking validators -oj --limit=3000 | jq '.validators[] | select(.status=="BOND_STATUS_BONDED")' | jq -r '(.tokens|tonumber/pow(10; 6)|floor|tostring) + " \t " + .description.moniker' | sort -gr | nl
