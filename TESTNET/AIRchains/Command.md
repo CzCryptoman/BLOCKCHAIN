@@ -183,6 +183,11 @@ Get sync status
 ```
 junctiond status 2>&1 | jq .SyncInfo.catching_up
 ```
+**CHECK MISSING BLOCK:**
+```
+junctiond query slashing signing-info $(junctiond tendermint show-validator)
+```
+
 Get latest height
 ```
 junctiond status 2>&1 | jq .SyncInfo.latest_block_height
