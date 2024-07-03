@@ -182,11 +182,11 @@ sed -i \
 ## 🚨 Maintenance
 GET VALIDATOR INFO
 ```
-initiad status 2>&1 | jq .ValidatorInfo
+initiad status 2>&1 | jq .validator_info
 ```
 GET SYNC INFO
 ```
-initiad status 2>&1 | jq .SyncInfo
+initiad status 2>&1 | jq .sync_info
 ```
 GET NODE PEER
 ```
