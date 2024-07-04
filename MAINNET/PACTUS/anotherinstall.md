@@ -63,9 +63,32 @@ sudo systemctl enable pactusd
 ```
 sudo systemctl restart pactusd && journalctl -f -u pactusd
 ```
+
+**Important: Set tx_pool = 100 -> 50**
+```
+sed -i.bak '/^\s*[tx_pool]/, /^\s*[/{s/(max_size = )100/\150/;}' $HOME/pactus/config.toml
+```
+
 # 6. Change Config.toml
 ```
 nano $HOME/pactus/config.toml
+```
+Find [http]
+```
+// Edit
+
+[http]
+  enable = false -> true
+  listen = "127.0.0.1:80" -> "127.0.0.1:8085"
+
+// EX:
+[http]
+  enable = true
+  listen = "127.0.0.1:8085"
+```
+
+
+OR:
 ```
 ### Before
 > [http]
@@ -80,12 +103,20 @@ nano $HOME/pactus/config.toml
 > enable = true
 > 
 > listen = "0.0.0.0:80"
-> 
+>
+```
+
 ```
 sudo systemctl stop pactusd
 sudo systemctl restart pactusd
 ```
 ### Check node ID.
+```
 http://***your_ip_node***:80/node
-# 7. Update bootstrap. Create a new Fork and pull request to Pactus Github
+```
+# 7. Update bootstrap.
+
+Create a new Fork and pull request to Pactus Github
+```
 [Link github](https://github.com/pactus-project/pactus)
+```
