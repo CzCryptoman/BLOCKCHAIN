@@ -1,4 +1,4 @@
-# UPDATE
+# UPGRADE
 
 ## Download and build upgrade binaries
 
