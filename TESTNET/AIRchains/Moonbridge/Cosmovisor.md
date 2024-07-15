@@ -41,15 +41,14 @@ junctiond version --long | grep -e commit -e version
 ## Config and Init node:
 
 ### Set node configuration:
+
 ```
-junctiond config chain-id junction
-junctiond config keyring-backend file
-junctiond config node tcp://localhost:13757
+junctiond init $MONIKER --chain-id junction && \
+junctiond config set client chain-id junction && \
+junctiond config set client keyring-backend test && \
+junctiond config set client node tcp://localhost:13757
 ```
-### Initialize node:
-```
-junctiond init $MONIKER --chain-id junction
-```
+
 ### Download genesis and addrbook
 ```
 curl -Ls https://snapshots.moonbridge.team/testnet/airchains/genesis.json > $HOME/.junction/config/genesis.json
