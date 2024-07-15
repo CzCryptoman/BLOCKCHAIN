@@ -444,12 +444,12 @@ nilchaind q mstaking validators -oj --limit=2000 | jq '.validators[] | select(.s
 
 ### Get validator info
 ```
-nilchaind status 2>&1 | jq .ValidatorInfo
+nilchaind status 2>&1 | jq .validator_info
 ```
 
 ### Get sync info
 ```
-nilchaind status 2>&1 | jq .SyncInfo
+nilchaind status 2>&1 | jq .sync_info
 ```
 
 ### Get node peer
