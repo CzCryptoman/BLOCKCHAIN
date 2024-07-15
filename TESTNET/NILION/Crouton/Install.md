@@ -40,12 +40,12 @@ go version
 ```
 git clone https://github.com/NillionNetwork/nilchain nillion 
 cd nillion 
-git checkout 0.2.1 
+git checkout v0.2.1 
 make install
 nilchaind version --long | grep -e version -e commit
 ```
 
-`version: 0.2.1`
+`version: v0.2.1`
 
 `commit: 179cfef832447f2cb681c996cf9e87387f4d4d9f`
 
@@ -56,7 +56,7 @@ wget https://storage.crouton.digital/testnet/nillion/bin/nilchaind
 chmod +x nilchaind
 mv nilchaind $HOME/go/bin
 nilchaind version --long | grep -e version -e commit
-# version: 0.2.1
+# version: v0.2.1
 # commit: 179cfef832447f2cb681c996cf9e87387f4d4d9f
 ````
 
