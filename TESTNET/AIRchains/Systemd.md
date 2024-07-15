@@ -68,6 +68,7 @@ PEERS="de2e7251667dee5de5eed98e54a58749fadd23d8@34.22.237.85:26656"
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.junction/config/config.toml
 ```
 ### Set Pruning, Enable Prometheus, Gas Price, and Indexer
+
 ```
 PRUNING="custom"
 PRUNING_KEEP_RECENT="100"
@@ -77,10 +78,23 @@ sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \
 \"$PRUNING_KEEP_RECENT\"/" $HOME/.junction/config/app.toml
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \
 \"$PRUNING_INTERVAL\"/" $HOME/.junction/config/app.toml
+```
+
+Disable tx Index:
+```
 sed -i -e 's|^indexer *=.*|indexer = "null"|' $HOME/.junction/config/config.toml
+```
+
+Enable Prometheus:
+```
 sed -i 's|^prometheus *=.*|prometheus = true|' $HOME/.junction/config/config.toml
+```
+
+Set minimum Gas
+```
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.00025amf\"/" $HOME/.junction/config/app.toml
 ```
+
 ### Create service
 ```
 sudo tee /etc/systemd/system/junctiond.service > /dev/null << EOF
@@ -99,13 +113,21 @@ WantedBy=multi-user.target
 EOF
 ```
 ### Download the snapshot
+
+**Moonbridge.team:**
+```
+curl -o - -L https://snapshots.moonbridge.team/testnet/airchains/snapshot_latest.tar.lz4 | lz4 -dc - | tar -x -C $HOME/.junction
+```
+
+**Or synergynodes.com:**
 ```
 wget -O junction_1604.tar.lz4 https://support.synergynodes.com/snapshots/junction_testnet/junction_1604.tar.lz4
 ```
-### Decompress the snapshot
+Decompress the snapshot
 ```
 lz4 -c -d junction_1604.tar.lz4 | tar -x -C $HOME/.junction
 ```
+
 ### Create Service
 ```
 sudo tee /etc/systemd/system/junctiond.service > /dev/null <<EOF
