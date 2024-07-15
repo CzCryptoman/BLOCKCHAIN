@@ -438,8 +438,51 @@ nilchaind q mstaking validators -oj --limit=2000 | jq '.validators[] | select(.s
 
 
 
-## Onchain
 
+
+## 🚨 Maintenance
+
+### Get validator info
+```
+nilchaind status 2>&1 | jq .ValidatorInfo
+```
+
+### Get sync info
+```
+nilchaind status 2>&1 | jq .SyncInfo
+```
+
+### Get node peer
+```
+echo $(nilchaind tendermint show-node-id)'@'$(curl -s ifconfig.me)':'$(cat .nillionapp/config/config.toml | sed -n '/Address to listen for incoming connection/{n;p;}' | sed 's/.*://; s/".*//')
+```
+
+### Check if validator key is correct
+```
+[[ $(nilchaind q staking validator $(nilchaind keys show wallet --bech val -a) -oj | jq -r .consensus_pubkey.key) = $(nilchaind status | jq -r .ValidatorInfo.PubKey.value) ]] && echo -e "\n\e[1m\e[32mTrue\e[0m\n" || echo -e "\n\e[1m\e[31mFalse\e[0m\n"
+```
+
+### Get live peers
+```
+curl -sS http://localhost:24757/net_info | jq -r '.result.peers[] | "\(.node_info.id)@\(.remote_ip):\(.node_info.listen_addr)"' | awk -F ':' '{print $1":"$(NF)}'
+```
+
+### Set minimum gas price
+```
+sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"\"/" .nillionapp/config/app.toml
+```
+
+### Enable prometheus
+```
+sed -i -e "s/prometheus = false/prometheus = true/" .nillionapp/config/config.toml
+```
+
+### Reset chain data
+```
+nilchaind tendermint unsafe-reset-all --home .nillionapp --keep-addr-book
+```
+
+## Onchain
 
 WALLET: `wallet`
 
