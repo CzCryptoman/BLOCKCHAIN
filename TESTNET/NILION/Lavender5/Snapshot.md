@@ -22,10 +22,10 @@ One liner to get moving quickly
 
 ```
 sudo systemctl stop nilchaind
-cp .nillionapp/data/priv_validator_state.json .nillionapp/priv_validator_state.json.backup
-rm -rf .nillionapp/data
-curl -L https://snapshots.lavenderfive.com/testnet-snapshots/nillion/nillion_2494238.tar.lz4 | tar -Ilz4 -xf - -C .nillionapp
-mv .nillionapp/priv_validator_state.json.backup .nillionapp/data/priv_validator_state.json
+cp $HOME/.nillionapp/data/priv_validator_state.json $HOME/.nillionapp/priv_validator_state.json.backup
+rm -rf $HOME/.nillionapp/data
+curl -L https://snapshots.lavenderfive.com/testnet-snapshots/nillion/nillion_2494238.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.nillionapp
+mv $HOME/.nillionapp/priv_validator_state.json.backup $HOME/.nillionapp/data/priv_validator_state.json
 sudo systemctl start nilchaind && sudo journalctl -u nilchaind -f --no-hostname -o cat
 ```
 
@@ -34,15 +34,15 @@ sudo systemctl start nilchaind && sudo journalctl -u nilchaind -f --no-hostname 
 ### Stop nilchaind and reset the data
 ```
 sudo systemctl stop nilchaind
-cp .nillionapp/data/priv_validator_state.json .nillionapp/priv_validator_state.json.backup
-rm -rf .nillionapp/data
+cp $HOME/.nillionapp/data/priv_validator_state.json $HOME/.nillionapp/priv_validator_state.json.backup
+rm -rf $HOME/.nillionapp/data
 ```
 
 
 ### Download latest snapshot
 ```
-curl -L https://snapshots.lavenderfive.com/testnet-snapshots/nillion/nillion_2494238.tar.lz4 | tar -Ilz4 -xf - -C .nillionapp
-mv .nillionapp/priv_validator_state.json.backup .nillionapp/data/priv_validator_state.json
+curl -L https://snapshots.lavenderfive.com/testnet-snapshots/nillion/nillion_2494238.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.nillionapp
+mv $HOME/.nillionapp/priv_validator_state.json.backup $HOME/.nillionapp/data/priv_validator_state.json
 ```
 
 ### Restart nilchaind and check the log
