@@ -270,6 +270,7 @@ sudo systemctl restart nilchaind && sudo journalctl -u nilchaind -f
 
 ### Delete Node
 ```
+cd $HOME
 sudo systemctl stop nilchaind
 sudo systemctl disable nilchaind
 sudo rm -rf /etc/systemd/system/nilchaind.service
