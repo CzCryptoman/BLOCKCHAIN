@@ -33,6 +33,11 @@ Ubuntu 22.04 (We are working on support for other Linux-like OS)
 
 MacOS
 
+## PORT:
+
+![image](https://github.com/user-attachments/assets/cc7e9baa-c9ea-44a9-8292-40995598c0f7)
+
+
 ## Run a light validator
 
 Light validator is a type of node that performs availability validation solely through data sampling without participating in data sharding synchronization. It is also part of a consensus network. These nodes can participate in voting but will not act as proposers to generate new blocks. You can follow the steps below to start a light validator:
