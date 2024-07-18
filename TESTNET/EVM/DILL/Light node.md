@@ -35,7 +35,8 @@ MacOS
 
 ## PORT:
 
-![image](https://github.com/user-attachments/assets/cc7e9baa-c9ea-44a9-8292-40995598c0f7)
+![image](https://github.com/user-attachments/assets/b657ecee-e63f-47a0-bdc2-60894ee319a8)
+
 
 
 ## Run a light validator
