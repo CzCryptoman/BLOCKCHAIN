@@ -131,10 +131,33 @@ sudo systemctl daemon-reload
 sudo systemctl enable junctiond
 ```
 ### Download latest snapshot:
+
+
+
 ```
 curl -o - -L https://snapshots.moonbridge.team/testnet/airchains/snapshot_latest.tar.lz4 | lz4 -dc - | tar -x -C $HOME/.junction
 [[ -f $HOME/.junction/data/upgrade-info.json ]] && cp $HOME/.junction/data/upgrade-info.json $HOME/.junction/cosmovisor/genesis/upgrade-info.json
 ```
+
+OR: 
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+`https://services.moonbridge.team/testnet/airchains/snapshot/`
+
+
+Stop the service and reset the data:
+```
+sudo systemctl stop junctiond
+cp $HOME/.junction/data/priv_validator_state.json $HOME/.junction/priv_validator_state.json.backup
+rm -rf $HOME/.junction/data
+```
+
+Download latest snapshot:
+```
+curl -o - -L https://snapshots.moonbridge.team/testnet/airchains/snapshot_latest.tar.lz4 | lz4 -dc - | tar -x -C $HOME/.junction
+mv $HOME/.junction/priv_validator_state.json.backup $HOME/.junction/data/priv_validator_state.json
+```
+----------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Start service and check the logs:
 ```
