@@ -65,6 +65,18 @@ sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persisten
 sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.001amf\"|" $HOME/.junction/config/app.toml
 ```
 ### Setting pruning:
+
+index, pruning & snapshot
+```
+sed -i.bak -e "s/^indexer *=.*/indexer = \"null\"/"                                                     $HOME/.junction/config/config.toml
+sed -i.bak -e "s/^pruning *=.*/pruning = \"custom\"/"                                                   $HOME/.junction/config/app.toml
+sed -i.bak -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/"                              $HOME/.junction/config/app.toml
+sed -i.bak -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"0\"/"                                  $HOME/.junction/config/app.toml 
+sed -i.bak -e "s/^pruning-interval *=.*/pruning-interval = \"17\"/"                                     $HOME/.junction/config/app.toml
+sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"100\"/"                                  $HOME/.junction/config/app.toml
+```
+Or
+pruning
 ```
 sed -i -e 's|^pruning *=.*|pruning = "custom"|' $HOME/.junction/config/app.toml
 sed -i -e 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|' $HOME/.junction/config/app.toml
