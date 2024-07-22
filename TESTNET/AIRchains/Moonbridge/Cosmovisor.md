@@ -62,7 +62,7 @@ sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persisten
 ```
 ### Setting minimum gas price:
 ```
-sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.001amf\"|" $HOME/.junction/config/app.toml
+sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.0001amf\"|" $HOME/.junction/config/app.toml
 ```
 ### Setting pruning:
 
