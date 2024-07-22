@@ -72,7 +72,7 @@ sed -i.bak -e "s/^indexer *=.*/indexer = \"null\"/"                             
 sed -i.bak -e "s/^pruning *=.*/pruning = \"custom\"/"                                                   $HOME/.junction/config/app.toml
 sed -i.bak -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/"                              $HOME/.junction/config/app.toml
 sed -i.bak -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"0\"/"                                  $HOME/.junction/config/app.toml 
-sed -i.bak -e "s/^pruning-interval *=.*/pruning-interval = \"17\"/"                                     $HOME/.junction/config/app.toml
+sed -i.bak -e "s/^pruning-interval *=.*/pruning-interval = \"19\"/"                                     $HOME/.junction/config/app.toml
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"100\"/"                                  $HOME/.junction/config/app.toml
 ```
 Or
