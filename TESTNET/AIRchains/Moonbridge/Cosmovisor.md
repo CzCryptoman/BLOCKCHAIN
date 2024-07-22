@@ -66,22 +66,25 @@ sed -i -e "s|^minimum-gas-prices *=.*|minimum-gas-prices = \"0.001amf\"|" $HOME/
 ```
 ### Setting pruning:
 
-index, pruning & snapshot
+index (disable), pruning (custom) & snapshot (enable)
 ```
 sed -i.bak -e "s/^indexer *=.*/indexer = \"null\"/"                                                     $HOME/.junction/config/config.toml
 sed -i.bak -e "s/^pruning *=.*/pruning = \"custom\"/"                                                   $HOME/.junction/config/app.toml
 sed -i.bak -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"100\"/"                              $HOME/.junction/config/app.toml
 sed -i.bak -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"0\"/"                                  $HOME/.junction/config/app.toml 
-sed -i.bak -e "s/^pruning-interval *=.*/pruning-interval = \"19\"/"                                     $HOME/.junction/config/app.toml
+sed -i.bak -e "s/^pruning-interval *=.*/pruning-interval = \"17\"/"                                     $HOME/.junction/config/app.toml
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"100\"/"                                  $HOME/.junction/config/app.toml
 ```
-Or
-pruning
+**Or**
+
+index (enable), pruning (custom) & snapshot (disable)
 ```
+sed -i.bak -e "s/^indexer *=.*/indexer = \"kv\"/"                                                     $HOME/.junction/config/config.toml
 sed -i -e 's|^pruning *=.*|pruning = "custom"|' $HOME/.junction/config/app.toml
 sed -i -e 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|' $HOME/.junction/config/app.toml
 sed -i -e 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|' $HOME/.junction/config/app.toml
-sed -i -e 's|^pruning-interval *=.*|pruning-interval = "10"|' $HOME/.junction/config/app.toml
+sed -i -e 's|^pruning-interval *=.*|pruning-interval = "19"|' $HOME/.junction/config/app.toml
+sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"0\"/"                                  $HOME/.junction/config/app.toml
 ```
 ### Disable indexer:
 ```
