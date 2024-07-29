@@ -16,7 +16,7 @@ mv dill dillbackup
 ```
 ### 1. Update and install packages for compiling
 ```
-cd $HOME && source <(curl -s https://raw.githubusercontent.com/vnbnode/binaries/main/update-binary.sh)
+cd $HOME && source <(curl -s https://github.com/CzCryptoman/BLOCKCHAIN/blob/main/BINARIES/update-binary.sh)
 ```
 ### 2. Download Light Validator Binary
 - For Linux-like systems: [Download Link](https://dill-release.s3.ap-southeast-1.amazonaws.com/linux/dill.tar.gz)
