@@ -9,8 +9,6 @@ else
   sudo apt update && sudo apt install curl -y < "/dev/null"
 fi
 
-# Logo
-sleep 1 && curl -s https://raw.githubusercontent.com/vnbnode/binaries/main/Logo/logo.sh | bash && sleep 1
 
 # Update
 echo -e "\e[1m\e[32m1. Update... \e[0m" && sleep 1
