@@ -30,7 +30,7 @@ sudo apt-get remove --auto-remove golang-go
 
 # Go
 echo -e "\e[1m\e[32m4. Installing Go... \e[0m" && sleep 1
-VER="1.21.3"
+VER="1.22.4"
 wget "https://golang.org/dl/go$VER.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf "go$VER.linux-amd64.tar.gz"
