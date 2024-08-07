@@ -45,6 +45,14 @@ junctiond version --long | grep -e commit -e version
 ```
 junctiond init $MONIKER --chain-id junction && \
 junctiond config set client chain-id junction && \
+junctiond config set client keyring-backend os && \
+junctiond config set client node tcp://localhost:13757
+```
+
+or:
+```
+junctiond init $MONIKER --chain-id junction && \
+junctiond config set client chain-id junction && \
 junctiond config set client keyring-backend test && \
 junctiond config set client node tcp://localhost:13757
 ```
