@@ -23,7 +23,7 @@ go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.5.0
 ```
 
 ```
-sudo tee /etc/systemd/system/hedge.service > /dev/null << EOF
+sudo tee /etc/systemd/system/hedged.service > /dev/null << EOF
 [Unit]
 Description=hedge node service
 After=network-online.target
@@ -45,7 +45,7 @@ EOF
 ```
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable hedge
+sudo systemctl enable hedged
 ```
 
 ## Initialize Node
@@ -98,8 +98,8 @@ mv $HOME/.hedge/priv_validator_state.json.backup $HOME/.hedge/data/priv_validato
 ```
 ### Start Node
 ```
-sudo systemctl start hedge
-journalctl -u hedge -f
+sudo systemctl start hedged
+journalctl -u hedged -f
 ```
 
 
@@ -112,11 +112,11 @@ cp $HOME/.hedge/config/priv_validator_key.json $HOME/backup/hedge
 ### Remove Node
 ```
 cd $HOME
-sudo systemctl stop hedge
-sudo systemctl disable hedge
-sudo rm /etc/systemd/system/hedge.service
+sudo systemctl stop hedged
+sudo systemctl disable hedged
+sudo rm /etc/systemd/system/hedged.service
 sudo systemctl daemon-reload
-sudo rm -f $(which hedge)
+sudo rm -f $(which hedged)
 sudo rm -rf $HOME/.hedge
 ```
 
