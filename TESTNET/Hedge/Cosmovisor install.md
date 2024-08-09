@@ -89,6 +89,11 @@ sed -i -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://0.0.0.0:${hed
 hedged config node tcp://localhost:${hedge}57
 ```
 
+### Enable Prometheus:
+```
+sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.hedge/config/config.toml
+```
+
 ### Snapshot
 ```
 cp $HOME/.hedge/data/priv_validator_state.json $HOME/.hedge/priv_validator_state.json.backup
