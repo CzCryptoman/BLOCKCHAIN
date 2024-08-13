@@ -99,6 +99,14 @@ sudo systemctl restart slinky.service
 sudo journalctl -fu slinky --no-hostname
 ```
 
+```
+sudo systemctl status slinky
+```
+
+Check price:
+```
+curl localhost:8080/slinky/oracle/v1/prices | jq
+```
 
 ### Remove Oracle
 ```
