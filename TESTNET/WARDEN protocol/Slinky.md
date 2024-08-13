@@ -7,13 +7,13 @@ cd $HOME
 rm -rf slinky
 git clone https://github.com/skip-mev/slinky.git
 cd slinky
-git checkout v1.0.3
+git checkout v1.0.9
 
 # Build binaries
 make build
 
 # Move binary to local bin
-mv build/slinky /usr/local/bin/
+sudo mv build/slinky /usr/local/bin/
 rm -rf build
 ```
 
@@ -35,6 +35,9 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+
+```
 sudo systemctl daemon-reload
 sudo systemctl enable slinky.service
 ```
@@ -46,6 +49,7 @@ sudo systemctl enable slinky.service
 nano $HOME/.warden/config/app.toml
 ```
 
+add:
 
 ```
 ###############################################################################
@@ -94,6 +98,8 @@ sed -i.bak \
 sudo systemctl start slinky.service
 journalctl -fu slinky --no-hostname
 ```
+
+
 ### Remove Oracle
 ```
 cd $HOME
