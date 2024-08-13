@@ -27,7 +27,7 @@ After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which slinky) --oracle-config-path $HOME/slinky/config/core/oracle.json --market-map-endpoint 0.0.0.0:42290
+ExecStart=$(which slinky) --market-map-endpoint localhost:42290
 Restart=on-failure
 RestartSec=30
 LimitNOFILE=65535
@@ -95,8 +95,8 @@ sed -i.bak \
 
 ### Run oracle
 ```
-sudo systemctl start slinky.service
-journalctl -fu slinky --no-hostname
+sudo systemctl restart slinky.service
+sudo journalctl -fu slinky --no-hostname
 ```
 
 
